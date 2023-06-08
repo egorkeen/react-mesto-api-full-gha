@@ -1,8 +1,8 @@
 // импортируем все необходимое
 // express, b-p, mongoose
 const express = require('express');
-const mongoose = require('mongoose');
 const cors = require('cors');
+const mongoose = require('mongoose');
 const { errors } = require('celebrate');
 const bodyParser = require('body-parser');
 const handleErrors = require('./middlewares/handleErrors');
