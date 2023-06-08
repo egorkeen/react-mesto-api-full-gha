@@ -2,6 +2,7 @@
 // express, b-p, mongoose
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const { errors } = require('celebrate');
 const bodyParser = require('body-parser');
 const handleErrors = require('./middlewares/handleErrors');
@@ -31,6 +32,9 @@ const PORT = process.env.PORT || 3000;
 // миддлвэры
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// подключить cors
+app.use(cors());
 
 // подключить логгер запросов
 app.use(requestLogger);
