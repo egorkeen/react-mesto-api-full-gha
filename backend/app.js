@@ -23,6 +23,9 @@ const signInRouter = require('./routes/sign-in');
 const signUpRouter = require('./routes/sign-up');
 const auth = require('./middlewares/auth');
 
+// allowedCors
+const allowedCors = require('./utils/constants');
+
 // ошибка 404
 const NotFoundError = require('./errors/NotFoundError');
 
@@ -34,7 +37,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // подключить cors
-app.use(cors());
+app.use(cors({
+  origin: allowedCors,
+  credentials: true,
+  methods: ['GET', 'POST', 'PATCH', 'DELETE', 'PUT'],
+  allowedHeaders: ['Authorization'],
+
+}));
 
 // подключить логгер запросов
 app.use(requestLogger);
