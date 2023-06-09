@@ -6,6 +6,7 @@ const NotFoundError = require('../errors/NotFoundError');
 const InaccurateDataError = require('../errors/InaccurateDataError');
 const AuthorizeError = require('../errors/AuthorizeError');
 const ConflictError = require('../errors/ConflictError');
+const { JWT_SECRET, NODE_ENV } = process.env;
 
 // войти в аккаунт
 module.exports.login = (req, res, next) => {
@@ -16,7 +17,7 @@ module.exports.login = (req, res, next) => {
       if (_id) {
         const token = jwt.sign(
           { _id },
-          'some-secret-key',
+          NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key',
           { expiresIn: '7d' },
         );
 
