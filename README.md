@@ -7,7 +7,7 @@
 
 ## Ссылки на проект
 
-Публичный IPv4-адрес 158.160.35.243
+IP 158.160.35.243
 
 Frontend https://mesto.egorkeen.nomoredomains.rocks/
 
