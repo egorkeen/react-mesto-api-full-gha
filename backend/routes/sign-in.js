@@ -4,6 +4,6 @@ const { login } = require('../controllers/users');
 
 const celebrate = require('../middlewares/celebrate');
 
-signInRouter.post('/sign-in', celebrate.celebrateLogin, login);
+signInRouter.post('/signin', celebrate.celebrateLogin, login);
 
 module.exports = signInRouter;
