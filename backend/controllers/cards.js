@@ -37,7 +37,7 @@ module.exports.createCard = (req, res, next) => {
 
 // удалить карточку
 module.exports.deleteCard = (req, res, next) => {
-  const { cardId } = req.params;
+  const { cardId } = req.body._id;
 
   Card.findById(cardId)
     .then((card) => {
@@ -69,7 +69,7 @@ module.exports.deleteCard = (req, res, next) => {
 
 // поставить лайк на карточку
 module.exports.likeCard = (req, res, next) => {
-  const { cardId } = req.params;
+  const { cardId } = req.body._id;
 
   Card.findByIdAndUpdate(
     cardId,
@@ -92,7 +92,7 @@ module.exports.likeCard = (req, res, next) => {
 
 // убрать лайк на карточку
 module.exports.dislikeCard = (req, res, next) => {
-  const { cardId } = req.params;
+  const { cardId } = req.body._id;
 
   Card.findByIdAndUpdate(
     cardId,
