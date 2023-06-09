@@ -94,6 +94,7 @@ module.exports.getUserById = (req, res, next) => {
         about: user.about,
         avatar: user.avatar,
         email: user.email,
+        _id: user._id,
       });
     })
     .catch((err) => {
@@ -120,6 +121,7 @@ module.exports.getCurrentUser = (req, res, next) => {
         about: user.about,
         avatar: user.avatar,
         email: user.email,
+        _id: _id,
       });
     })
     .catch((err) => {
