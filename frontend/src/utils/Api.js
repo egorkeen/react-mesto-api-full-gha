@@ -110,7 +110,7 @@ const api = new Api ({
   baseUrl: 'https://api.mesto.egorkeen.nomoredomains.rocks',
   headers: {
     'Content-Type': 'application/json',
-    authorization: `Bearer ${localStorage.getItem('jwt')}`,
+    Authorization: `Bearer ${localStorage.getItem('jwt')}`,
   }
 });
 
