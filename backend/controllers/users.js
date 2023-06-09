@@ -6,6 +6,7 @@ const NotFoundError = require('../errors/NotFoundError');
 const InaccurateDataError = require('../errors/InaccurateDataError');
 const AuthorizeError = require('../errors/AuthorizeError');
 const ConflictError = require('../errors/ConflictError');
+
 const { JWT_SECRET, NODE_ENV } = process.env;
 
 // войти в аккаунт
@@ -74,7 +75,6 @@ module.exports.getUsers = (req, res, next) => {
       res.send(users);
     })
     .catch((err) => {
-      console.log(err);
       next(err);
     });
 };
@@ -121,7 +121,7 @@ module.exports.getCurrentUser = (req, res, next) => {
         about: user.about,
         avatar: user.avatar,
         email: user.email,
-        _id: _id,
+        _id: user._id,
       });
     })
     .catch((err) => {

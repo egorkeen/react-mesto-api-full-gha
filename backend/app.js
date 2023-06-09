@@ -23,9 +23,6 @@ const signInRouter = require('./routes/sign-in');
 const signUpRouter = require('./routes/sign-up');
 const auth = require('./middlewares/auth');
 
-// allowedCors
-const allowedCors = require('./utils/constants');
-
 // ошибка 404
 const NotFoundError = require('./errors/NotFoundError');
 
@@ -47,7 +44,7 @@ app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
-}); 
+});
 
 // используем все роуты
 app.use(signInRouter);
