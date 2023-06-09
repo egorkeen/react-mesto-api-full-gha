@@ -1,0 +1,19 @@
+.form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  width: 430px;
+  height: fit-content;
+  background-color: white;
+  border-radius: 10px;
+  z-index: 150;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .form {
+    width: 282px;
+  }
+}
