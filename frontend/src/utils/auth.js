@@ -4,10 +4,10 @@ class Auth {
   }
     // проверить статус запроса
   _checkStatus(res) {
-    if (res) {
+    if (res.ok) {
       return res.json();
     } else {
-      return Promise.reject(`${res.status} ${res.statusText}`);
+      throw new Error(`${res.status} ${res.statusText}`);
     };
   };
 
