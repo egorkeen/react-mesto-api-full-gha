@@ -152,7 +152,8 @@ function App() {
       .then((res) => {
         // временное решение проблемы, в дальнейшем требуется реализовать
         // валидацию при помощи регулярного выражения
-        if (res.statusCode === 200 || 201) {
+        if (res.statusCode === 200 || res.statusCode === 201) {
+          console.log(res.statusCode)
           setSuccessPopupOpen(true);
           navigate("/signin", { replace: true });
         } else {
@@ -169,7 +170,7 @@ function App() {
     auth
       .auth(userData)
       .then((res) => {
-        if (res.statusCode === 200 || 201) {
+        if (res.statusCode === 200 || res.statusCode === 201) {
           const token = res.token;
           localStorage.setItem("jwt", token);
           api
@@ -187,6 +188,7 @@ function App() {
             })
             .catch((err) => console.log(err));
         } else {
+          console.log(res.statusCode)
           setErrorPopupOpen(true);
         }
       })

@@ -22,7 +22,7 @@ module.exports.login = (req, res, next) => {
           { expiresIn: '7d' },
         );
 
-        return res.send({ token });
+        return res.status(200).send({ token });
       }
       throw new AuthorizeError('Неверные почта или пароль');
     })
@@ -50,7 +50,7 @@ module.exports.createUser = (req, res, next) => {
       },
     ))
     .then((user) => {
-      res.status(201).send({
+      res.status(200).send({
         name: user.name,
         about: user.about,
         avatar: user.avatar,
@@ -89,7 +89,7 @@ module.exports.getUserById = (req, res, next) => {
         throw new NotFoundError('Пользователь с данным id не найден');
       }
 
-      return res.send({
+      return res.status(200).send({
         name: user.name,
         about: user.about,
         avatar: user.avatar,
@@ -116,7 +116,7 @@ module.exports.getCurrentUser = (req, res, next) => {
         throw new NotFoundError('Пользователь с данным id не найден');
       }
 
-      return res.send({
+      return res.status(200).send({
         name: user.name,
         about: user.about,
         avatar: user.avatar,
@@ -153,7 +153,7 @@ module.exports.updateUserProfile = (req, res, next) => {
       if (!user) {
         throw new NotFoundError('Пользователь с данным id не найден');
       }
-      return res.send({
+      return res.status(200).send({
         name: user.name,
         about: user.about,
         avatar: user.avatar,
@@ -190,7 +190,7 @@ module.exports.updateUserAvatar = (req, res, next) => {
       if (!user) {
         throw new NotFoundError('Пользователь с данным id не найден');
       }
-      return res.send({
+      return res.status(200).send({
         name: user.name,
         about: user.about,
         avatar: user.avatar,
