@@ -1,0 +1,15 @@
+.start-form {
+  max-width: 358px;
+  max-height: fit-content;
+  max-height: fit-content;
+  margin: 60px auto 0;
+  padding: 0 0 104px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .start-form {
+    padding-bottom: 95px;
+  }
+}

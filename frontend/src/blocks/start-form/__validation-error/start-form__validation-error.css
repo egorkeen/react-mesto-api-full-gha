@@ -1,0 +1,10 @@
+.start-form__validation-error {
+  min-height: 17px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  margin: 4px 0 4px;
+  padding: 0;
+  color: red;
+  visibility: hidden;
+}

@@ -1,0 +1,17 @@
+.modal-popup__title {
+  display: block;
+  font-family: 'Inter';
+  max-width: 358px;
+  text-align: center;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .modal-popup__title {
+    font-size: 20px;
+  }
+}

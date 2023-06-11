@@ -1,0 +1,24 @@
+.form__submit-button_inactive {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  width: 358px;
+  height: 50px;
+  margin: 18px auto 37px;
+  color: black;
+  background-color: white;
+  transition: .2s linear;
+  opacity: .2;
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  border-radius: 2px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .form__submit-button_inactive {
+    font-size: 14px;
+    line-height: 17px;
+    width: 238px;
+    height: 46px;
+  }
+}

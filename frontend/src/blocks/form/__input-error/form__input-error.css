@@ -1,0 +1,13 @@
+.form__input-error {
+  width: 330px;
+  height: 12px;
+  margin: 5px 64px 30px 36px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .form__input-error {
+    width: 238px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

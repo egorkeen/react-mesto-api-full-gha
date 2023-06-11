@@ -1,0 +1,16 @@
+.start-form__container {
+  max-width: 358px;
+  min-height: 82px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 191px auto 0;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .start-form__container {
+    max-width: 260px;
+    margin-top: 173px;
+    min-height: 83px;
+  }
+}

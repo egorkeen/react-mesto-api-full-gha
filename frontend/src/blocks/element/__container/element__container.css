@@ -1,0 +1,8 @@
+.element__container {
+  margin: 0 auto;
+  width: 246px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
