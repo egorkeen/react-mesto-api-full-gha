@@ -36,13 +36,13 @@ function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [email, setEmail] = useState("example@example.com");
   const navigate = useNavigate();
-  const [isLoading, setLoading] = useState();
 
   useEffect(() => {
     tokenCheck();
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);  
 
-  const tokenCheck = () => {
+  function tokenCheck() {
     if (localStorage.getItem('jwt')) {
       const jwt = localStorage.getItem('jwt');
       auth
@@ -53,20 +53,20 @@ function App() {
             navigate("/", { replace: true });
             setEmail(res.email);
             api
-            .getUserData()
-            .then((res) => {
-              setCurrentUser(res);
-              api
-                .getInitialCards()
-                .then((res) => {
-                  setCards(res);
-                })
-            })
+              .getUserData()
+              .then((res) => {
+                setCurrentUser(res);
+                api
+                  .getInitialCards()
+                  .then((res) => {
+                    setCards(res);
+                  });
+              });
           }
         })
         .catch((err) => console.log(err));
     }
-  };
+  }
   // закрыть попапы
   function closeAllPopups() {
     setEditProfilePopupOpen(false);
