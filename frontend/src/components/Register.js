@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from './Header';
 
@@ -6,8 +6,11 @@ function Register(props) {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+
+  const [isSubmitButtonActive, setSubmitButtonActive] = useState(false);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -43,6 +46,31 @@ function Register(props) {
     return password.length >= 6 && password.length <= 12;
   }
 
+  useEffect(() => {
+    if (!isEmailValid(email)) {
+      setEmailError('Введите корректный email');
+    }
+  }, [email]);
+
+  useEffect(() => {
+    if (password.length < 6) {
+      setPasswordError('Длина пароля должна быть не меньше 6 символов');
+    }
+  }, [password]);
+
+  useEffect(() => {
+    if (isEmailValid(email) && (isPasswordValid(password))) {
+      setSubmitButtonActive(true);
+    } else {
+      setSubmitButtonActive(false);
+    }
+  }, [email, password]);
+
+  useEffect(() => {
+    setEmailError('');
+    setPasswordError('');
+  }, []);
+
   return(
     <div className='page'>
       <Header>
@@ -50,7 +78,7 @@ function Register(props) {
           <Link to='/signin' className='header__link'>Войти</Link>
         </div>
       </Header>
-      <form onSubmit={handleSubmit} className="start-form" name="register-form">
+      <form onSubmit={handleSubmit} className="start-form" name="register-form" noValidate>
         <h1 className='start-form__title'>Регистрация</h1>
         <input 
           onChange={handleEmailChange} 
@@ -79,7 +107,9 @@ function Register(props) {
           {passwordError}
         </span>
         <div className='start-form__container'>
-          <button type='submit' className="start-form__submit-button">Зарегистрироваться</button>
+          <button type='submit' className={`${isSubmitButtonActive ? 'start-form__submit-button' : 'start-form__submit-button_inactive'}`}>
+            Зарегистрироваться
+          </button>
           <Link to="/signin" className="start-form__link">Уже зарегистрированы? Войти</Link>
         </div>
       </form>

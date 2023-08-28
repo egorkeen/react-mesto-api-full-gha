@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "./Header";
 
 function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+
+  const [isSubmitButtonActive, setSubmitButtonActive] = useState(false);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -27,8 +30,8 @@ function Login(props) {
     } else {
       // в зависимости от того, какое поле некорректно, вылезет ошибка
       // для определенного поля
-      setEmailError(isEmailValid(email) ? null : 'Введён некорректный email');
-      setPasswordError(isPasswordValid(password) ? null : 'Введён некорректный пароль');
+      setEmailError(isEmailValid(email) ? null : 'Введите корректный email');
+      setPasswordError(isPasswordValid(password) ? null : 'Длина пароля должна быть не меньше 6 символов');
     }
   };
 
@@ -41,6 +44,31 @@ function Login(props) {
     return password.length >= 6 && password.length <= 12;
   }
 
+  useEffect(() => {
+    if (!isEmailValid(email)) {
+      setEmailError('Введите корректный email');
+    }
+  }, [email]);
+
+  useEffect(() => {
+    if (password.length < 6) {
+      setPasswordError('Длина пароля должна быть не меньше 6 символов');
+    }
+  }, [password]);
+
+  useEffect(() => {
+    if (isEmailValid(email) && (isPasswordValid(password))) {
+      setSubmitButtonActive(true);
+    } else {
+      setSubmitButtonActive(false);
+    }
+  }, [email, password]);
+
+  useEffect(() => {
+    setEmailError('');
+    setPasswordError('');
+  }, []);
+
   return (
     <div className="page">
       <Header>
@@ -50,7 +78,7 @@ function Login(props) {
           </Link>
         </div>
       </Header>
-      <form onSubmit={handleSubmit} className="start-form" name="login-form">
+      <form onSubmit={handleSubmit} className="start-form" name="login-form" noValidate>
         <h1 className="start-form__title">Вход</h1>
         <input
           type="email"
@@ -81,7 +109,7 @@ function Login(props) {
           {passwordError}
         </span>
         <div className="start-form__container">
-          <button type="submit" className="start-form__submit-button">
+          <button type="submit" className={`${isSubmitButtonActive ? 'start-form__submit-button' : 'start-form__submit-button_inactive'}`}>
             Войти
           </button>
           <Link to="sign-up" className="start-form__link" />

@@ -123,6 +123,6 @@ class Api {
 };
 
 // API
-const api = new Api ('https://api.mesto.egorkeen.nomoredomains.rocks');
+const api = new Api ('http://localhost:3000');
 
 export default api;
